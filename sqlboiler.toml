@@ -1,0 +1,7 @@
+[mysql]
+  dbname = "ambitious"
+  host   = "localhost"
+  port   = 3306
+  user   = "moizumi"
+  pass   = "jamyuki0210"
+  sslmode= "false"
