@@ -22,7 +22,7 @@ import (
 	"github.com/volatiletech/sqlboiler/strmangle"
 )
 
-// TodoDetail is an object representing the database table.
+// +gen slice:"Where,Count,GroupBy[string],First"
 type TodoDetail struct {
 	TodoDetailID int       `boil:"todo_detail_id" json:"todo_detail_id" toml:"todo_detail_id" yaml:"todo_detail_id"`
 	Content      string    `boil:"content" json:"content" toml:"content" yaml:"content"`
@@ -32,6 +32,7 @@ type TodoDetail struct {
 	TodoID       int       `boil:"todo_id" json:"todo_id" toml:"todo_id" yaml:"todo_id"`
 	ModifiedBy   null.Int  `boil:"modified_by" json:"modified_by,omitempty" toml:"modified_by" yaml:"modified_by,omitempty"`
 	ModifiedAt   null.Time `boil:"modified_at" json:"modified_at,omitempty" toml:"modified_at" yaml:"modified_at,omitempty"`
+	DateStr      string    `json:"date"`
 
 	R *todoDetailR `boil:"-" json:"-" toml:"-" yaml:"-"`
 	L todoDetailL  `boil:"-" json:"-" toml:"-" yaml:"-"`
@@ -1159,4 +1160,54 @@ func TodoDetailExists(ctx context.Context, exec boil.ContextExecutor, todoDetail
 	}
 
 	return exists, nil
+}
+
+// Where returns a new TodoDetailSlice whose elements return true for func. See: http://clipperhouse.github.io/gen/#Where
+func (rcv TodoDetailSlice) Where(fn func(*TodoDetail) bool) (result TodoDetailSlice) {
+	for _, v := range rcv {
+		if fn(v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+// Count gives the number elements of TodoDetailSlice that return true for the passed func. See: http://clipperhouse.github.io/gen/#Count
+func (rcv TodoDetailSlice) Count(fn func(*TodoDetail) bool) (result int) {
+	for _, v := range rcv {
+		if fn(v) {
+			result++
+		}
+	}
+	return
+}
+
+// GroupByString groups elements into a map keyed by string. See: http://clipperhouse.github.io/gen/#GroupBy
+func (rcv TodoDetailSlice) GroupByString(fn func(*TodoDetail) string) map[string]TodoDetailSlice {
+	result := make(map[string]TodoDetailSlice)
+	for _, v := range rcv {
+		key := fn(v)
+		result[key] = append(result[key], v)
+	}
+	return result
+}
+
+// First returns the first element that returns true for the passed func. Returns error if no elements return true. See: http://clipperhouse.github.io/gen/#First
+func (rcv TodoDetailSlice) First(fn func(*TodoDetail) bool) (result *TodoDetail, err error) {
+	for _, v := range rcv {
+		if fn(v) {
+			result = v
+			return
+		}
+	}
+	err = errors.New("no TodoDetailSlice elements return true for passed func")
+	return
+}
+
+// SelectString projects a slice of string from TodoDetailSlice, typically called a map in other frameworks. See: http://clipperhouse.github.io/gen/#Select
+func (rcv TodoDetailSlice) SelectTodoDetail(fn func(*TodoDetail) *TodoDetail) (result TodoDetailSlice) {
+	for _, v := range rcv {
+		result = append(result, fn(v))
+	}
+	return
 }

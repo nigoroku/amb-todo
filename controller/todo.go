@@ -6,6 +6,7 @@ import (
 
 	"fmt"
 	"strconv"
+	"time"
 
 	"local.packages/models"
 	"local.packages/service"
@@ -16,8 +17,9 @@ import (
 )
 
 type TodoForm struct {
-	TodoDetails []models.TodoDetail `json:"todos"`
-	UserID      int                 `json:"user_id"`
+	TodoDetails models.TodoDetailSlice `json:"todos"`
+	UserID      int                    `json:"user_id"`
+	DateStr     string                 `json:"date"`
 }
 
 func FindTodosByUser(c *gin.Context) {
@@ -35,9 +37,30 @@ func FindTodosByUser(c *gin.Context) {
 		return
 	}
 
+	// 日付ごとにまとめる
+	td := todoDetails.
+		Where(func(detail *models.TodoDetail) bool {
+			// タスクが完了している過去のタスクは表示しない
+			return detail.CreatedAt.Format("2006/01/02") == time.Now().Format("2006/01/02") || detail.Checked == false
+		}).
+		SelectTodoDetail(func(detail *models.TodoDetail) *models.TodoDetail {
+			detail.DateStr = detail.CreatedAt.Format("2006/01/02")
+			return detail
+		}).GroupByString(func(detail *models.TodoDetail) string {
+		return detail.DateStr
+	})
+
+	var todoForms []TodoForm
+	for k, v := range td {
+		var form TodoForm
+		form.DateStr = k
+		form.TodoDetails = v
+		todoForms = append(todoForms, form)
+	}
+
 	c.JSON(http.StatusOK, gin.H{
-		"message":     "ok",
-		"todoDetails": todoDetails,
+		"message": "ok",
+		"todos":   todoForms,
 	})
 }
 
@@ -47,7 +70,7 @@ func CreateTodo(c *gin.Context) {
 	c.BindJSON(&todoForm)
 
 	todoService := service.NewTodoService()
-	todos, err := todoService.AddTodos(todoForm.TodoDetails, todoForm.UserID)
+	todoDetails, err := todoService.AddTodos(todoForm.TodoDetails, todoForm.UserID)
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -57,9 +80,26 @@ func CreateTodo(c *gin.Context) {
 		return
 	}
 
+	// 日付ごとにまとめる
+	td := todoDetails.
+		SelectTodoDetail(func(detail *models.TodoDetail) *models.TodoDetail {
+			detail.DateStr = detail.CreatedAt.Format("2006/01/02")
+			return detail
+		}).GroupByString(func(detail *models.TodoDetail) string {
+		return detail.DateStr
+	})
+
+	var todoForms []TodoForm
+	for k, v := range td {
+		var form TodoForm
+		form.DateStr = k
+		form.TodoDetails = v
+		todoForms = append(todoForms, form)
+	}
+
 	c.JSON(http.StatusOK, gin.H{
 		"message": "ok",
-		"todos":   todos,
+		"todos":   todoForms,
 	})
 }
 

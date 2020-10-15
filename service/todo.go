@@ -34,7 +34,8 @@ func (t *TodoService) FindTodosByUser(userId int) (models.TodoDetailSlice, error
 		qm.Select("td.*"),
 		qm.From("todos as t"),
 		qm.InnerJoin("todo_details as td ON t.todo_id = td.todo_id"),
-		qm.Where("t.user_id=? and t.created_at > DATE_SUB(NOW(), INTERVAL 1 DAY)", userId),
+		qm.Where("t.user_id=?", userId),
+		// qm.Where("t.user_id=? and t.created_at > DATE_SUB(NOW(), INTERVAL 1 DAY)", userId),
 	).Bind(t.ctx, t.db, &todoDetails)
 
 	if err != nil {
@@ -45,14 +46,17 @@ func (t *TodoService) FindTodosByUser(userId int) (models.TodoDetailSlice, error
 	return todoDetails, err
 }
 
-func (ts *TodoService) AddTodos(todos []models.TodoDetail, userId int) ([]models.TodoDetail, error) {
-	now := time.Now()
+func (ts *TodoService) AddTodos(todos models.TodoDetailSlice, userId int) (models.TodoDetailSlice, error) {
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	nowJST := time.Now().In(jst)
+	fmt.Println(nowJST)
 
 	// Todo登録
 	var t models.Todo
 	t.UserID = userId
 	t.CreatedBy = userId
-	t.CreatedAt = now
+	t.CreatedAt = nowJST
+	fmt.Println(t.CreatedAt)
 	err1 := t.Insert(ts.ctx, ts.db, boil.Infer())
 
 	if err1 != nil {
@@ -61,17 +65,17 @@ func (ts *TodoService) AddTodos(todos []models.TodoDetail, userId int) ([]models
 	}
 
 	// TodoDetails登録
-	var todo_details []models.TodoDetail
+	var todo_details models.TodoDetailSlice
 	for _, todo := range todos {
 		if todo.Content == "" {
 			continue
 		}
-		var td models.TodoDetail
+		td := &models.TodoDetail{}
 		td.TodoID = t.TodoID
 		td.Checked = false
 		td.Content = todo.Content
 		td.CreatedBy = userId
-		td.CreatedAt = now
+		td.CreatedAt = nowJST
 		err2 := td.Insert(ts.ctx, ts.db, boil.Infer())
 
 		todo_details = append(todo_details, td)
@@ -85,14 +89,15 @@ func (ts *TodoService) AddTodos(todos []models.TodoDetail, userId int) ([]models
 }
 
 func (t *TodoService) UpdateTodos(todoDetails models.TodoDetailSlice) error {
-	now := time.Now()
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	nowJST := time.Now().In(jst)
 
 	for _, detail := range todoDetails {
 
 		updCols := map[string]interface{}{
 			models.TodoDetailColumns.TodoDetailID: detail.TodoDetailID,
 			models.TodoDetailColumns.Checked:      detail.Checked,
-			models.TodoDetailColumns.ModifiedAt:   now,
+			models.TodoDetailColumns.ModifiedAt:   nowJST,
 		}
 
 		query := qm.WhereIn(models.TodoDetailColumns.TodoDetailID+" = ?", detail.TodoDetailID)
