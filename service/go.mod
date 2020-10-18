@@ -12,5 +12,8 @@ require (
 	github.com/volatiletech/inflect v0.0.1 // indirect
 	github.com/volatiletech/null v8.0.0+incompatible // indirect
 	github.com/volatiletech/sqlboiler v3.7.1+incompatible
+	local.packages/models v0.0.0-00010101000000-000000000000
 
 )
+
+replace local.packages/models => ./../models

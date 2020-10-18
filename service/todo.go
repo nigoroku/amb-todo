@@ -39,7 +39,7 @@ func (t *TodoService) FindTodosByUser(userId int) (models.TodoDetailSlice, error
 	).Bind(t.ctx, t.db, &todoDetails)
 
 	if err != nil {
-		fmt.Println("error %v", err)
+		fmt.Printf("error %v", err)
 		return models.TodoDetailSlice{}, err
 	}
 
@@ -49,7 +49,6 @@ func (t *TodoService) FindTodosByUser(userId int) (models.TodoDetailSlice, error
 func (ts *TodoService) AddTodos(todos models.TodoDetailSlice, userId int) (models.TodoDetailSlice, error) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	nowJST := time.Now().In(jst)
-	fmt.Println(nowJST)
 
 	// Todo登録
 	var t models.Todo

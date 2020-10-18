@@ -28,6 +28,7 @@ type User struct {
 	Name        string    `boil:"name" json:"name" toml:"name" yaml:"name"`
 	LoginID     string    `boil:"login_id" json:"login_id" toml:"login_id" yaml:"login_id"`
 	Password    string    `boil:"password" json:"password" toml:"password" yaml:"password"`
+	Email       string    `boil:"email" json:"email" toml:"email" yaml:"email"`
 	Role        int8      `boil:"role" json:"role" toml:"role" yaml:"role"`
 	LastLoginAt null.Time `boil:"last_login_at" json:"last_login_at,omitempty" toml:"last_login_at" yaml:"last_login_at,omitempty"`
 	CreatedBy   int       `boil:"created_by" json:"created_by" toml:"created_by" yaml:"created_by"`

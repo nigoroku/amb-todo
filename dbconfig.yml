@@ -1,0 +1,5 @@
+development:
+  dialect: mysql
+  datasource: moizumi:jamyuki0210@/ambitious_test?parseTime=true
+  dir: db/migrations
+  table: migrations

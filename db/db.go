@@ -8,7 +8,7 @@ import (
 	"github.com/volatiletech/sqlboiler/boil"
 )
 
-func init() {
+func Init() {
 	// DB接続
 	db, err := sql.Open("mysql", "moizumi:jamyuki0210@tcp(localhost:3306)/ambitious?parseTime=true")
 	if err != nil {

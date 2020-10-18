@@ -24,6 +24,9 @@ func main() {
 	config.AllowOrigins = []string{"http://localhost:3000"}
 	r.Use(cors.New(config))
 
+	// DB接続
+	db.Init()
+
 	// ルーティング
 	TodoRoute := r.Group("/api/v1")
 	{
