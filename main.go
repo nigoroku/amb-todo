@@ -5,6 +5,7 @@ import (
 	// "github.com/kzpolicy/amb-todo/controller"
 	"github.com/kzpolicy/amb-todo/middleware"
 	"local.packages/controller"
+	"local.packages/db"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"

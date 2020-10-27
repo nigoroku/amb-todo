@@ -22,7 +22,7 @@ var (
 
 func Init() {
 	// DB接続
-	db, err := sql.Open("mysql", "moizumi:jamyuki0210@tcp(localhost:3306)/ambitious_test?parseTime=true")
+	db, err := sql.Open("mysql", "moizumi:base0210@tcp(localhost:3306)/ambitious_test?parseTime=true")
 	if err != nil {
 		log.Fatalf("Cannot connect database: %v", err)
 	}
@@ -49,8 +49,8 @@ func TestAddTodos(t *testing.T) {
 	tx := MustTx(boil.BeginTx(ctx, nil))
 	defer func() { _ = tx.Rollback() }()
 
-	// TODO: 事前に登録
-	user := models.User{UserID: 153}
+	user := &models.User{Email: "tedt@fwdse.com"}
+	user.Insert(ctx, tx, boil.Infer())
 
 	todoService := &TodoService{ctx, tx}
 	_, err2 := todoService.AddTodos(ds, user.UserID)
