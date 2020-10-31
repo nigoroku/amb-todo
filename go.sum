@@ -141,14 +141,6 @@ github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515/go.mod h1:+0opPa2QZZtGFB
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
 github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
-github.com/kzpolicy/amb-todo/controller v0.0.0-20200802033857-9e153e414a56 h1:2K2eOi2DHoRtpC+ZHLopH2SBT4x12m5edNdgSzMpL6k=
-github.com/kzpolicy/amb-todo/controller v0.0.0-20200802033857-9e153e414a56/go.mod h1:GnrE5ExbDVGZjaT/Q9IY80/JjIUvRwpXhxQVPCwve5I=
-github.com/kzpolicy/amb-todo/middleware v0.0.0-20200802033857-9e153e414a56 h1:ijinXfgpQUg1sDgQN3++PzI0VEkMWYKedw95h9w2FDE=
-github.com/kzpolicy/amb-todo/middleware v0.0.0-20200802033857-9e153e414a56/go.mod h1:qj13BZ+yAJt9+C3kGfhLEcDQJBpUkNCpwbwB+zTju8Y=
-github.com/kzpolicy/amb-todo/models v0.0.0-20200802033857-9e153e414a56 h1:lRRdcnEbYJvhCJIRfOkmDYaJmX4DGvDoI56bZZ3/7pw=
-github.com/kzpolicy/amb-todo/models v0.0.0-20200802033857-9e153e414a56/go.mod h1:wNEmzwBA9OoaQRbxh3TEjjcmDZ6dFuzCNs4Jzo7bcMY=
-github.com/kzpolicy/amb-todo/service v0.0.0-20200802033857-9e153e414a56 h1:1q5ZCmecVYueigX4qjU3YxMy8UDPKhcg9eKDSeg3DvY=
-github.com/kzpolicy/amb-todo/service v0.0.0-20200802033857-9e153e414a56/go.mod h1:JzK2F3ikxJQ+wjdr3E7EiwTdzNsVgMAiPvWKGuOOyfA=
 github.com/labstack/echo v1.4.4 h1:1bEiBNeGSUKxcPDGfZ/7IgdhJJZx8wV/pICJh4W2NJI=
 github.com/labstack/echo v3.3.10+incompatible h1:pGRcYk231ExFAyoAjAfD85kQzRJCRI8bbnE7CX5OEgg=
 github.com/labstack/echo v3.3.10+incompatible/go.mod h1:0INS7j/VjnFxD4E2wkz67b8cVwCLbBmJyDaka6Cmk1s=

@@ -1,4 +1,4 @@
-module github.com/kzpolicy/amb-todo
+module github.com/nigoroku/amb-todo
 
 go 1.14
 
@@ -9,10 +9,6 @@ require (
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/gofrs/uuid v3.3.0+incompatible // indirect
-	github.com/kzpolicy/amb-todo/controller v0.0.0-20200802033857-9e153e414a56
-	github.com/kzpolicy/amb-todo/middleware v0.0.0-20200802033857-9e153e414a56
-	github.com/kzpolicy/amb-todo/models v0.0.0-20200802033857-9e153e414a56 // indirect
-	github.com/kzpolicy/amb-todo/service v0.0.0-20200802033857-9e153e414a56 // indirect
 	github.com/labstack/echo v3.3.10+incompatible // indirect
 	github.com/labstack/gommon v0.3.0 // indirect
 	github.com/mitchellh/mapstructure v1.3.2 // indirect
@@ -34,10 +30,10 @@ require (
 	golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543 // indirect
 	gopkg.in/ini.v1 v1.57.0 // indirect
 	local.packages/controller v0.0.0-00010101000000-000000000000
+	local.packages/db v0.0.0-00010101000000-000000000000
 	local.packages/middleware v0.0.0-00010101000000-000000000000
 	local.packages/models v0.0.0-00010101000000-000000000000 // indirect
 	local.packages/service v0.0.0-00010101000000-000000000000 // indirect
-	local.packages/db v0.0.0-00010101000000-000000000000 // indirect
 )
 
 replace local.packages/models => ./models

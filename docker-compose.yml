@@ -1,0 +1,22 @@
+version: "3"
+services:
+  todo:
+    build:
+      context: .
+    volumes:
+      - ./:/go/src/github.com/nigoroku/amb-todo
+    ports:
+      - "8082:8082"
+    environment:
+      - DATABASE_HOST=amb-db
+      - DATABASE_PASSWORD=base0210
+      - DATABASE=ambitious
+      - DATABASE_USERNAME=root
+    tty: true
+    stdin_open: true
+    networks:
+      - amb-network
+
+networks:
+  amb-network:
+    external: true

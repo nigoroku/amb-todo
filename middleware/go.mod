@@ -1,4 +1,4 @@
-module github.com/kzpolicy/amb-todo/middleware
+module github.com/nigoroku/amb-todo/middleware
 
 go 1.14
 

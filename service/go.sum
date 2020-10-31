@@ -7,9 +7,6 @@ github.com/go-sql-driver/mysql v1.5.0/go.mod h1:DCzpHaOWr8IXmIStZouvnhqoel9Qv2LB
 github.com/gofrs/uuid v1.2.0 h1:coDhrjgyJaglxSjxuJdqQSSdUpG3w6p1OwN2od6frBU=
 github.com/gofrs/uuid v3.3.0+incompatible h1:8K4tyRfvU1CYPgJsveYFQMhpFd/wXNM7iK6rR7UHz84=
 github.com/gofrs/uuid v3.3.0+incompatible/go.mod h1:b2aQJv3Z4Fp6yNu3cdSllBxTCLRxnplIgP/c0N/04lM=
-github.com/kzpolicy/amb-todo v0.0.0-20200802032234-03e4927c81ec h1:RbkN3v5WB9u+gCc4APiZgaYcYUul10cKb/Q4UOqFT3w=
-github.com/kzpolicy/amb-todo/models v0.0.0-20200802033857-9e153e414a56 h1:lRRdcnEbYJvhCJIRfOkmDYaJmX4DGvDoI56bZZ3/7pw=
-github.com/kzpolicy/amb-todo/models v0.0.0-20200802033857-9e153e414a56/go.mod h1:wNEmzwBA9OoaQRbxh3TEjjcmDZ6dFuzCNs4Jzo7bcMY=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/spf13/cast v1.3.1 h1:nFm6S0SMdyzrzcmThSipiEubIDy8WEXKNZ0UOgiRpng=

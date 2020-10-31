@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/gin-contrib/cors"
 	// "github.com/kzpolicy/amb-todo/controller"
-	"github.com/kzpolicy/amb-todo/middleware"
 	"local.packages/controller"
 	"local.packages/db"
+	"local.packages/middleware"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"

@@ -1,4 +1,4 @@
-module github.com/kzpolicy/amb-todo/controller
+module github.com/nigoroku/amb-todo/controller
 
 go 1.14
 

@@ -1,3 +1,3 @@
-module github.com/nigoroku/amb-user/db
+module github.com/nigoroku/amb-todo/db
 
 go 1.14
