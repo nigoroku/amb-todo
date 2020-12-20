@@ -8,7 +8,7 @@ CREATE TABLE `output_achievements` (
   `created_at` timestamp NOT NULL,
   `modified_by` int DEFAULT NULL,
   `modified_at` timestamp NULL DEFAULT NULL,
-  `output_time` varchar(30) DEFAULT NULL,
+  `output_time` int DEFAULT NULL,
   `user_id` int NOT NULL,
   PRIMARY KEY (`output_achievement_id`),
   KEY `user_id` (`user_id`),

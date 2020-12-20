@@ -1,1 +1,8 @@
 __debug_bin
+
+conf.d
+
+.env*
+
+.kube
+.docker

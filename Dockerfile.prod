@@ -1,0 +1,17 @@
+FROM golang:1.14.10-alpine3.12 as builder
+
+WORKDIR /go/src/github.com/nigoroku/amb-todo
+ADD . /go/src/github.com/nigoroku/amb-todo
+
+ENV GO111MODULE=on
+
+RUN go mod download
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /go/bin/amb-todo
+
+FROM alpine:latest
+
+RUN apk update && apk add --no-cache ca-certificates
+COPY --from=builder /go/bin/amb-todo /go/bin/amb-todo
+
+ENTRYPOINT ["/go/bin/amb-todo"]
+EXPOSE 8082
