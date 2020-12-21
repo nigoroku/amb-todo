@@ -49,10 +49,11 @@
 - [Todoサービス（Go）](https://github.com/nigoroku/amb-todo)
 - [タイムラインサービス（Go）](https://github.com/nigoroku/amb-boad-list)
 - [実績管理サービス（Go）](https://github.com/nigoroku/amb-achievement)
-- [AWS構成ファイル(Terraform)、Kubernetesマニュフェスト等](https://github.com/nigoroku/amb-terraform-aws)
+- [AWS構成ファイル（Terraform）、Kubernetesマニュフェスト等](https://github.com/nigoroku/amb-terraform-aws)
 
 ### 補足
 
 普段の業務では、Java, SVN, オンプレの環境で作業をしているため、ほぼ業務での経験がない技術を使用しています。
 
 Vue.js と GitHub に関しては、業務で一度使用経験有り。
+
