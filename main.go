@@ -22,7 +22,7 @@ func main() {
 
 	// CORS 対応
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:3000"}
+	config.AllowOrigins = []string{"*"}
 	r.Use(cors.New(config))
 
 	// DB接続
