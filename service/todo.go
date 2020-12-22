@@ -47,7 +47,7 @@ func (t *TodoService) FindTodosByUser(userId int) (models.TodoDetailSlice, error
 }
 
 func (ts *TodoService) AddTodos(todos models.TodoDetailSlice, userId int) (models.TodoDetailSlice, error) {
-	jst, _ := time.LoadLocation("Asia/Tokyo")
+	jst := time.FixedZone("JST", 9*60*60)
 	nowJST := time.Now().In(jst)
 
 	// Todo登録
@@ -88,7 +88,7 @@ func (ts *TodoService) AddTodos(todos models.TodoDetailSlice, userId int) (model
 }
 
 func (t *TodoService) UpdateTodos(todoDetails models.TodoDetailSlice) error {
-	jst, _ := time.LoadLocation("Asia/Tokyo")
+	jst := time.FixedZone("JST", 9*60*60)
 	nowJST := time.Now().In(jst)
 
 	for _, detail := range todoDetails {
