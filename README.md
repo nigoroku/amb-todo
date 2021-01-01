@@ -18,9 +18,9 @@
   - *アウトプット・インプット時間割合比較*
   - カテゴリ別学習時間集計
   - 集計期間単位の学習時間推移
-- Todo 登録機能（日単位に登録）
-- インプット実績登録機能（日単位に登録）
-- アウトプット実績登録機能（日単位に登録）
+- Todo 登録機能（日単位で登録）
+- インプット実績登録機能（日単位で登録）
+- アウトプット実績登録機能（日単位で登録）
 - インプット・アウトプットタイムライン
 - アカウント情報変更機能
 - ログイン（JWT）
@@ -31,17 +31,17 @@
 ![Untitled Diagram (8)](https://user-images.githubusercontent.com/72080660/102783682-a978d080-43de-11eb-9742-b8def9fea9c9.png)
 ### 言語
 
-- Go（Gin-Gonic）
-- Nuxt.js
+- バックエンド（Go, Gin-Gonic）
+- フロントエンド（Nuxt.js）
 
-### インフラ
+### 使用技術
 
-- AWS
-- Docker
-- docker-compose
+- AWS（VPC, Route53, ALB, ACM, EKS, S3, CloudFront, CloudWatch）
+- コンテナ（Docker, docker-compose）
+- データベース（MySQL）
+- CI/CD（GitHub Actions）
 - Kubernetes
-- GitHub Actions
-- Terraform
+- 開発ツール（MacOS, VSCode, Git, GitHub, Terraform）
 
 ### 関連リポジトリ
 - [フロント（Nuxt.js）](https://github.com/nigoroku/amb-front)
@@ -56,4 +56,3 @@
 普段の業務では、Java, SVN, オンプレの環境で作業をしているため、ほぼ業務での経験がない技術を使用しています。
 
 Vue.js と GitHub に関しては、業務で一度使用経験有り。
-
